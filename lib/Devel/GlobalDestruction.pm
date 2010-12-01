@@ -5,28 +5,21 @@ package Devel::GlobalDestruction;
 use strict;
 use warnings;
 
-use vars qw($VERSION @ISA);
+use XSLoader;
 
-BEGIN {
-	$VERSION = '0.02';
-
-	local $@;
-
-	eval {
-		require XSLoader;
-		__PACKAGE__->XSLoader::load($VERSION);
-		1;
-	} or do {
-		require DynaLoader;
-		push @ISA, 'DynaLoader';
-		__PACKAGE__->bootstrap($VERSION);
-	};
-}
+our $VERSION = '0.03';
 
 use Sub::Exporter -setup => {
 	exports => [ qw(in_global_destruction) ],
 	groups  => { default => [ -all ] },
 };
+
+if ($] >= 5.013007) {
+    eval 'sub in_global_destruction () { ${^GLOBAL_PHASE} eq q[DESTRUCT] }';
+}
+else {
+    XSLoader::load(__PACKAGE__, $VERSION);
+}
 
 __PACKAGE__
 
@@ -82,9 +75,11 @@ This module is maintained using Darcs. You can get the latest version from
 L<http://nothingmuch.woobling.org/code>, and use C<darcs send> to commit
 changes.
 
-=head1 AUTHOR
+=head1 AUTHORS
 
 Yuval Kogman E<lt>nothingmuch@woobling.orgE<gt>
+
+Florian Ragwitz E<lt>rafl@debian.orgE<gt>
 
 =head1 COPYRIGHT
 

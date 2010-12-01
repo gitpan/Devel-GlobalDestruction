@@ -1,3 +1,5 @@
+.gitignore
+Changes
 GlobalDestruction.xs
 lib/Devel/GlobalDestruction.pm
 Makefile.PL
