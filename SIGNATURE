@@ -1,5 +1,5 @@
 This file contains message digests of all files listed in MANIFEST,
-signed via the Module::Signature module, version 0.66.
+signed via the Module::Signature module, version 0.68.
 
 To verify the content in this distribution, first make sure you have
 Module::Signature installed, then type:
@@ -15,19 +15,20 @@ not run its Makefile.PL or Build.PL.
 Hash: SHA1
 
 SHA1 1a7e2cee69e08f6074f4a35cc6be12dd9c3d5ff6 .gitignore
-SHA1 6c8abc1ab900168fc4f6de1094eee0a320900fe1 Changes
+SHA1 56770f650075c562a99d412f146393568e63424c Changes
 SHA1 bfaef5766f5884dd3095f0fd699f4c08a30a70fb GlobalDestruction.xs
-SHA1 49d7ffcb052755d58db95cfffc8ac66f53f8bb42 MANIFEST
+SHA1 bf2142c6ea9885028234bb6f90fa6687e28ce3c4 MANIFEST
 SHA1 190e9058eb9c6446a1a3f3ddf15b082f1ecde152 MANIFEST.SKIP
-SHA1 b00dc4eb543e356b5d337556205d1f64f0b384a2 META.yml
-SHA1 28776b0c9967790e380ecef87253f00ff2dafddf Makefile.PL
-SHA1 2ffaf300cf028422b3ef8b8ee983ec2938b4855e lib/Devel/GlobalDestruction.pm
-SHA1 6f942a3aa4b7201650bbc0cc2a3b3b6ca3b6a14c ppport.h
-SHA1 10ff9fb74375ba61efcfa6da8c7b32a3068da968 t/basic.t
+SHA1 708b18d1dca97cd952122e97f762649a29dadf58 META.yml
+SHA1 cd0ab4b6a1636aeaca1a80c1302ad77a8b7fd898 MYMETA.yml
+SHA1 802dc51e7ddf798b45b7100bf21971cb5a82c091 Makefile.PL
+SHA1 7ae376ad436b26a40b015973de90bb8f4c8fb8ff lib/Devel/GlobalDestruction.pm
+SHA1 075e952c63274922f43e7638b6b43f26ad1aa128 ppport.h
+SHA1 54e4b3b93d246d86cc7830f28adb91e636b87398 t/basic.t
 -----BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.4.10 (GNU/Linux)
+Version: GnuPG v1.4.11 (GNU/Linux)
 
-iEYEARECAAYFAkz2t7AACgkQdC8qQo5jWl60rgCfaBk6yUp04E2urAdfL9wnhf/M
-vBEAn03pQPZzNS6lFpv3ZjQe+moX70MB
-=8n4T
+iEYEARECAAYFAk4QOHMACgkQdC8qQo5jWl75yQCfbP3sKLOCyTtMC+bEwRDfLsN0
+qvQAn32Jx0U7FAj+SuZx1kHutWlThuZb
+=9/Wj
 -----END PGP SIGNATURE-----

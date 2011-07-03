@@ -14,8 +14,7 @@ WriteMakefile(
     MIN_PERL_VERSION => '5.006000',
     PREREQ_PM        => {
         'Sub::Exporter' => 0,
-        'Scope::Guard'  => 0,
     },
-    ($] >= 5.013007 ? (XS => {}, C => []) : ()),
+    (defined ${^GLOBAL_PHASE} ? (XS => {}, C => []) : ()),
 );
 

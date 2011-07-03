@@ -7,14 +7,14 @@ use warnings;
 
 use XSLoader;
 
-our $VERSION = '0.03';
+our $VERSION = '0.04';
 
 use Sub::Exporter -setup => {
 	exports => [ qw(in_global_destruction) ],
 	groups  => { default => [ -all ] },
 };
 
-if ($] >= 5.013007) {
+if (defined ${^GLOBAL_PHASE}) {
     eval 'sub in_global_destruction () { ${^GLOBAL_PHASE} eq q[DESTRUCT] }';
 }
 else {
@@ -29,7 +29,7 @@ __END__
 
 =head1 NAME
 
-Devel::GlobalDestruction - Expose PL_dirty, the flag which marks global
+Devel::GlobalDestruction - Expose the flag which marks global
 destruction.
 
 =head1 SYNOPSIS
@@ -65,7 +65,9 @@ This module uses L<Sub::Exporter> so the exports may be renamed, aliased, etc.
 
 =item in_global_destruction
 
-Returns the current value of C<PL_dirty>.
+Returns true if the interpreter is in global destruction. In perl 5.14+, this
+returns C<${^GLOBAL_PHASE} eq 'DESTRUCT'>, and on earlier perls, it returns the
+current value of C<PL_dirty>.
 
 =back
 
@@ -80,6 +82,8 @@ changes.
 Yuval Kogman E<lt>nothingmuch@woobling.orgE<gt>
 
 Florian Ragwitz E<lt>rafl@debian.orgE<gt>
+
+Jesse Luehrs E<lt>doy@tozt.netE<gt>
 
 =head1 COPYRIGHT
 
