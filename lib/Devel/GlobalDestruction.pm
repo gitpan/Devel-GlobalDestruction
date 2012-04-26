@@ -3,7 +3,7 @@ package Devel::GlobalDestruction;
 use strict;
 use warnings;
 
-our $VERSION = '0.04_01';
+our $VERSION = '0.05';
 
 use Sub::Exporter -setup => {
     exports => [ qw(in_global_destruction) ],
@@ -112,12 +112,6 @@ returns C<${^GLOBAL_PHASE} eq 'DESTRUCT'>, and on earlier perls, it returns the
 current value of C<PL_dirty>.
 
 =back
-
-=head1 VERSION CONTROL
-
-This module is maintained using Darcs. You can get the latest version from
-L<http://nothingmuch.woobling.org/code>, and use C<darcs send> to commit
-changes.
 
 =head1 AUTHORS
 
