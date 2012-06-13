@@ -3,16 +3,20 @@ package Devel::GlobalDestruction;
 use strict;
 use warnings;
 
-our $VERSION = '0.05';
+our $VERSION = '0.06';
 
 use Sub::Exporter -setup => {
     exports => [ qw(in_global_destruction) ],
     groups  => { default => [ -all ] },
 };
 
+# we run 5.14+ - everything is in core
+#
 if (defined ${^GLOBAL_PHASE}) {
     eval 'sub in_global_destruction () { ${^GLOBAL_PHASE} eq q[DESTRUCT] }';
 }
+# try to load the xs version if it was compiled
+#
 elsif (eval {
     require XSLoader;
     XSLoader::load(__PACKAGE__, $VERSION);
@@ -20,17 +24,31 @@ elsif (eval {
 }) {
     # the eval already installed everything, nothing to do
 }
+# Not core nor XS
+#
 else {
+
+  # SpeedyCGI runs END blocks every cycle but somehow keeps object instances
+  # hence DIAF
+  die("The pure-perl version of @{[__PACKAGE__]} can not function correctly under CGI::SpeedyCGI. "
+    . "Please ensure you have a working compiler, and reinstall @{[__PACKAGE__]} to enable the XS "
+    . "codepath.\n"
+  ) if $CGI::SpeedyCGI::i_am_speedy;
+
   eval <<'PP_IGD' or die $@;
 
 my ($in_global_destruction, $before_is_installed);
 
 sub in_global_destruction { $in_global_destruction }
 
+# This block will fire towards the end of the program execution
+# Since there is no way for us to generate an END which will execute *last*
+# this is *NOT 100% INCOMPATIBLE* with XS/${^GLOBAL_PHASE}. We *may* end up
+# with a true in_gloal_destruction() in the middle of another END block
+# There are no practical cases where this matters.
+#
 END {
-  # SpeedyCGI runs END blocks every cycle but somehow keeps object instances
-  # hence lying about it seems reasonable...ish
-  $in_global_destruction = 1 unless $CGI::SpeedyCGI::i_am_speedy;
+  $in_global_destruction = 1;
 }
 
 # threads do not execute the global ENDs (it would be stupid). However
@@ -39,7 +57,7 @@ END {
 # is claimed to run in the context of the new thread. However this does
 # not really seem to be the case - any END evaled in a CLONE is ignored :(
 # Hence blatantly hooking threads::create
-
+#
 if ($INC{'threads.pm'}) {
   my $orig_create = threads->can('create');
   no warnings 'redefine';
