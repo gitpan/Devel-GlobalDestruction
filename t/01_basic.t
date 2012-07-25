@@ -19,10 +19,12 @@ BEGIN {
     sub DESTROY { my $self = shift; $self->[0]->() }
 }
 
-print "1..4\n";
+print "1..6\n";
 
+my $had_error = 0;
+END { $? = $had_error };
 sub ok ($$) {
-    print "not " if !$_[0];
+    $had_error++, print "not " if !$_[0];
     print "ok";
     print " - $_[1]" if defined $_[1];
     print "\n";
@@ -31,6 +33,10 @@ sub ok ($$) {
 ok( eval "use Devel::GlobalDestruction; 1", "use Devel::GlobalDestruction" );
 
 ok( defined &in_global_destruction, "exported" );
+
+ok( defined prototype \&in_global_destruction, "defined prototype" );
+
+ok( prototype \&in_global_destruction eq "", "empty prototype" );
 
 ok( !in_global_destruction(), "not in GD" );
 
