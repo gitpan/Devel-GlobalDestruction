@@ -18,9 +18,9 @@ no_index:
     - t
     - inc
 requires:
-  Sub::Exporter: 0
+  Sub::Exporter::Progressive: 0.001002
 resources:
   bugtracker: http://rt.cpan.org/Public/Dist/Display.html?Name=Devel-GlobalDestruction
   homepage: http://search.cpan.org/dist/Devel-GlobalDestruction
   repository: git://git.shadowcat.co.uk/p5sagit/Devel-GlobalDestruction.git
-version: 0.07
+version: 0.08
