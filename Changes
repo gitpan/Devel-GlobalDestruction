@@ -1,4 +1,4 @@
-0.09_01 Sat, 12 Aug 2012
+0.09_01  Tue, 19 Feb 2013
   * Fix pure-perl behavior under $^C (RT#78619))
 
 0.09  Wed, 08 Aug 2012

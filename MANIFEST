@@ -8,6 +8,8 @@ ppport.h
 t/01_basic.t
 t/02_thread.t
 t/03_minusc.t
+t/04_phases.t
+t/05_thread_clone.t
 t/10_pure-perl.t
 META.yml                                 Module YAML meta-data (added by MakeMaker)
 META.json                                Module JSON meta-data (added by MakeMaker)

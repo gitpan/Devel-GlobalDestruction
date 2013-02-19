@@ -37,11 +37,15 @@ BEGIN {
   require B;
   B::minus_c();
 
-  print "1..2\n";
+  print "1..3\n";
   ok( $^C, "Test properly running under minus-c" );
 }
 
 use Devel::GlobalDestruction;
+
+BEGIN {
+    ok !in_global_destruction(), "BEGIN is not GD with -c";
+}
 
 our $foo;
 BEGIN {
