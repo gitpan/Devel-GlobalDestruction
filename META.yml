@@ -7,7 +7,7 @@ build_requires:
 configure_requires:
   ExtUtils::CBuilder: 0.27
 dynamic_config: 1
-generated_by: 'ExtUtils::MakeMaker version 6.64, CPAN::Meta::Converter version 2.130880'
+generated_by: 'ExtUtils::MakeMaker version 6.8, CPAN::Meta::Converter version 2.132830'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -23,4 +23,4 @@ resources:
   bugtracker: http://rt.cpan.org/Public/Dist/Display.html?Name=Devel-GlobalDestruction
   homepage: http://search.cpan.org/dist/Devel-GlobalDestruction
   repository: git://git.shadowcat.co.uk/p5sagit/Devel-GlobalDestruction.git
-version: 0.11
+version: 0.12_01

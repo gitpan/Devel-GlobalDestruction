@@ -19,6 +19,18 @@ BEGIN { if ( $^O eq 'cygwin' ) {
   }
 }}
 
+use Text::ParseWords;
+
+sub parse_args {
+  # copied from EUMM
+  ExtUtils::MakeMaker::parse_args(
+    my $tmp = {},
+    Text::ParseWords::shellwords($ENV{PERL_MM_OPT} || ''),
+    @ARGV,
+  );
+  return $tmp->{ARGS} || {};
+}
+
 my $mymeta_works = eval { ExtUtils::MakeMaker->VERSION('6.5707'); 1 };
 my $mymeta = $mymeta_works || eval { ExtUtils::MakeMaker->VERSION('6.5702'); 1 };
 
@@ -26,7 +38,7 @@ my %META_BITS = (
 );
 my %RUN_DEPS = (
   'Sub::Exporter::Progressive' => '0.001006',
-  ( (defined ${^GLOBAL_PHASE} or !can_xs() )
+  ( (defined ${^GLOBAL_PHASE} or parse_args()->{PUREPERL_ONLY} or !can_xs() )
     ? ()
     : ('Devel::GlobalDestruction::XS' => 0)
   ),
