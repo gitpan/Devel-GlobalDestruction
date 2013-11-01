@@ -32,11 +32,11 @@
       },
       "runtime" : {
          "requires" : {
-            "Sub::Exporter::Progressive" : "0.001006"
+            "Sub::Exporter::Progressive" : "0.001011"
          }
       }
    },
-   "release_status" : "testing",
+   "release_status" : "stable",
    "resources" : {
       "bugtracker" : {
          "web" : "http://rt.cpan.org/Public/Dist/Display.html?Name=Devel-GlobalDestruction"
@@ -46,5 +46,5 @@
          "url" : "git://git.shadowcat.co.uk/p5sagit/Devel-GlobalDestruction.git"
       }
    },
-   "version" : "0.12_01"
+   "version" : "0.12"
 }
