@@ -1,10 +1,16 @@
 {
-   "abstract" : "unknown",
+   "abstract" : "Provides function returning the equivalent of C<${^GLOBAL_PHASE} eq 'DESTRUCT'> for older perls.",
    "author" : [
-      "unknown"
+      "Yuval Kogman <nothingmuch@woobling.org>",
+      "Florian Ragwitz <rafl@debian.org>",
+      "Jesse Luehrs <doy@tozt.net>",
+      "Peter Rabbitson <ribasushi@cpan.org>",
+      "Arthur Axel 'fREW' Schmidt <frioux@gmail.com>",
+      "Elizabeth Mattijsen <liz@dijkmat.nl>",
+      "Greham Knop <haarg@haarg.org>"
    ],
    "dynamic_config" : 1,
-   "generated_by" : "ExtUtils::MakeMaker version 6.8, CPAN::Meta::Converter version 2.132830",
+   "generated_by" : "ExtUtils::MakeMaker version 6.98, CPAN::Meta::Converter version 2.141520",
    "license" : [
       "perl_5"
    ],
@@ -16,35 +22,40 @@
    "no_index" : {
       "directory" : [
          "t",
-         "inc"
+         "xt"
       ]
    },
    "prereqs" : {
-      "build" : {
-         "requires" : {
-            "ExtUtils::MakeMaker" : "0"
-         }
-      },
+      "build" : {},
       "configure" : {
          "requires" : {
-            "ExtUtils::CBuilder" : "0.27"
+            "ExtUtils::CBuilder" : "0.27",
+            "ExtUtils::MakeMaker" : "0"
          }
       },
       "runtime" : {
          "requires" : {
-            "Sub::Exporter::Progressive" : "0.001011"
+            "Sub::Exporter::Progressive" : "0.001011",
+            "perl" : "5.006"
          }
-      }
+      },
+      "test" : {}
    },
    "release_status" : "stable",
    "resources" : {
       "bugtracker" : {
-         "web" : "http://rt.cpan.org/Public/Dist/Display.html?Name=Devel-GlobalDestruction"
+         "mailto" : "bug-Devel-GlobalDestruction@rt.cpan.org",
+         "web" : "https://rt.cpan.org/Public/Dist/Display.html?Name=Devel-GlobalDestruction"
       },
-      "homepage" : "http://search.cpan.org/dist/Devel-GlobalDestruction",
+      "homepage" : "https://metacpan.org/release/Devel-GlobalDestruction",
+      "license" : [
+         "http://dev.perl.org/licenses/"
+      ],
       "repository" : {
-         "url" : "git://git.shadowcat.co.uk/p5sagit/Devel-GlobalDestruction.git"
+         "type" : "git",
+         "url" : "git://git.shadowcat.co.uk/p5sagit/Devel-GlobalDestruction.git",
+         "web" : "http://git.shadowcat.co.uk/gitweb/gitweb.cgi?p=p5sagit/Devel-GlobalDestruction.git"
       }
    },
-   "version" : "0.12"
+   "version" : "0.13"
 }

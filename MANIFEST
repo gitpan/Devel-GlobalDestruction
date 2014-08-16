@@ -1,8 +1,8 @@
 Changes
 lib/Devel/GlobalDestruction.pm
+maint/Makefile.PL.include
 Makefile.PL
 MANIFEST			This list of files
-MANIFEST.SKIP
 t/01_basic.t
 t/02_thread.t
 t/03_minusc.t
@@ -12,3 +12,4 @@ t/06_load-in-gd.t
 t/10_pure-perl.t
 META.yml                                 Module YAML meta-data (added by MakeMaker)
 META.json                                Module JSON meta-data (added by MakeMaker)
+README                                   README file (added by Distar)
